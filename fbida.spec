@@ -26,6 +26,7 @@ BuildRequires:	tiff-devel
 BuildRequires:	ungif-devel
 BuildRequires:	lesstif-devel
 BuildRequires:	xpm-devel
+BuildRequires: 	fontconfig-devel
 # fwang: the app needs /etc/X11/app-defaults
 BuildRequires:	xsysinfo
 # fbi uses convert to show indirectly supported image format
