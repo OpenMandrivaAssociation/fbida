@@ -26,6 +26,7 @@ BuildRequires:	tiff-devel
 BuildRequires:	ungif-devel
 BuildRequires:	lesstif-devel
 BuildRequires:	xpm-devel
+BuildRequires:	X11-devel
 # fbi uses convert to show indirectly supported image format
 Requires:	ImageMagick
 # fbgs requires gs
