@@ -1,5 +1,5 @@
 %define version 2.03
-%define release 1mdk
+%define release %mkrel 1
 
 Summary:	Collection of applications for viewing and editing images
 Name:		fbida
@@ -10,8 +10,8 @@ Group:		Graphics
 URL:		http://linux.bytesex.org/fbida/
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:		http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.bz2
-Patch0:		fbida-2.03-mktemp.patch.bz2
-Patch1:		fbida-2.03-fbgs-arbitrary-resolution.patch.bz2
+Patch0:		fbida-2.03-mktemp.patch
+Patch1:		fbida-2.03-fbgs-arbitrary-resolution.patch
 Obsoletes:	fbi
 Provides:	fbi
 #BuildRequires:	XFree86-devel
