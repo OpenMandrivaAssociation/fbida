@@ -1,4 +1,4 @@
-%define version 2.03
+%define version 2.06
 %define release %mkrel 1
 
 Summary:	Collection of applications for viewing and editing images
