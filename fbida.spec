@@ -10,7 +10,6 @@ Group:		Graphics
 URL:		http://linux.bytesex.org/fbida/
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:		http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.bz2
-Patch0:		fbida-2.03-mktemp.patch
 Patch1:		fbida-2.03-fbgs-arbitrary-resolution.patch
 Obsoletes:	fbi
 Provides:	fbi
@@ -50,7 +49,6 @@ merged by author.
 
 %prep
 %setup -q
-%patch0 -p1 -b .mktemp
 %patch1 -p1 -b .resolution
 
 %build
