@@ -1,8 +1,9 @@
+%define name	fbida
 %define version 2.06
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary:	Collection of applications for viewing and editing images
-Name:		fbida
+Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 License:	GPL
@@ -13,7 +14,6 @@ Source:		http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.bz2
 Patch1:		fbida-2.03-fbgs-arbitrary-resolution.patch
 Obsoletes:	fbi
 Provides:	fbi
-#BuildRequires:	XFree86-devel
 BuildRequires:	curl-devel
 BuildRequires:	freetype2-devel
 BuildRequires:	jpeg-devel
@@ -64,6 +64,20 @@ export CFLAGS="%optflags"
 rm -rf %{buildroot}
 %makeinstall_std prefix=%{_prefix}
 
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop <<EOF
+[Desktop Entry]
+Encoding=UTF-8
+Name=IDA Image Viewer
+Comment=Basic image viewer and editor
+Exec=%{_bindir}/ida
+Icon=graphics_section.png
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Motif;Graphics;2DGraphics;RasterGraphics;Viewer;
+EOF
+
 %clean
 rm -rf %{buildroot}
 
@@ -72,4 +86,5 @@ rm -rf %{buildroot}
 %doc Changes COPYING README
 %config(noreplace) %{_sysconfdir}/X11/app-defaults/*
 %{_bindir}/*
+%{_datadir}/applications/mandriva-%{name}.desktop
 %{_mandir}/man1/*
