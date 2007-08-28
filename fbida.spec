@@ -67,7 +67,6 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop <<EOF
 [Desktop Entry]
-Encoding=UTF-8
 Name=IDA Image Viewer
 Comment=Basic image viewer and editor
 Exec=%{_bindir}/ida
