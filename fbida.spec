@@ -70,7 +70,7 @@ cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop <<EOF
 Name=IDA Image Viewer
 Comment=Basic image viewer and editor
 Exec=%{_bindir}/ida
-Icon=graphics_section.png
+Icon=graphics_section
 Terminal=false
 Type=Application
 StartupNotify=true
