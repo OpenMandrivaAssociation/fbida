@@ -9,7 +9,6 @@ Release:	%{release}
 License:	GPL
 Group:		Graphics
 URL:		http://linux.bytesex.org/fbida/
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:		http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.bz2
 Patch1:		fbida-2.03-fbgs-arbitrary-resolution.patch
 Obsoletes:	fbi
