@@ -30,7 +30,7 @@ BuildRequires: 	fontconfig-devel
 # fwang: the app needs /etc/X11/app-defaults
 BuildRequires:	xsysinfo
 # fbi uses convert to show indirectly supported image format
-Requires:	ImageMagick
+Requires:	imagemagick
 # fbgs requires gs
 Requires:	ghostscript
 
