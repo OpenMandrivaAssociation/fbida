@@ -1,6 +1,8 @@
+%define Werror_cflags %nil
+
 %define name	fbida
-%define version 2.06
-%define release %mkrel 4
+%define version 2.07
+%define release %mkrel 1
 
 Summary:	Collection of applications for viewing and editing images
 Name:		%{name}
