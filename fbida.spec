@@ -14,6 +14,7 @@ URL:		http://linux.bytesex.org/fbida/
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:		http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.bz2
 Patch1:		fbida-2.03-fbgs-arbitrary-resolution.patch
+Patch2:		fbida-2.07-fix-linkage.patch
 Obsoletes:	fbi
 Provides:	fbi
 BuildRequires:	curl-devel
@@ -28,6 +29,8 @@ BuildRequires:	tiff-devel
 BuildRequires:	ungif-devel
 BuildRequires:	lesstif-devel
 BuildRequires:	xpm-devel
+BuildRequires:	libxext-devel
+BuildRequires:	x11-server-common
 BuildRequires: 	fontconfig-devel
 # fwang: the app needs /etc/X11/app-defaults
 BuildRequires:	xsysinfo
@@ -55,6 +58,7 @@ merged by author.
 %prep
 %setup -q
 %patch1 -p1 -b .resolution
+%patch2 -p0 -b .linkage
 
 %build
 # Must use CFLAGS as env variable, because makefile adds flags to it.
