@@ -2,7 +2,7 @@
 
 %define name	fbida
 %define version 2.07
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary:	Collection of applications for viewing and editing images
 Name:		%{name}
@@ -59,6 +59,7 @@ merged by author.
 %setup -q
 %patch1 -p1 -b .resolution
 %patch2 -p0 -b .linkage
+rm -f jpeg/jpeg*
 
 %build
 # Must use CFLAGS as env variable, because makefile adds flags to it.
