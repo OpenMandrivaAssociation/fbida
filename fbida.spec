@@ -2,7 +2,7 @@
 
 %define name	fbida
 %define version 2.07
-%define release %mkrel 2
+%define release %mkrel 3
 
 Summary:	Collection of applications for viewing and editing images
 Name:		%{name}
