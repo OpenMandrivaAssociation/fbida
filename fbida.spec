@@ -8,14 +8,13 @@ Summary:	Collection of applications for viewing and editing images
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-License:	GPL
+License:	GPLv2+
 Group:		Graphics
 URL:		http://linux.bytesex.org/fbida/
 Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:		http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.bz2
 Patch1:		fbida-2.03-fbgs-arbitrary-resolution.patch
 Patch2:		fbida-2.07-fix-linkage.patch
-Obsoletes:	fbi
 Provides:	fbi
 BuildRequires:	curl-devel
 BuildRequires:	freetype2-devel
@@ -31,7 +30,7 @@ BuildRequires:	lesstif-devel
 BuildRequires:	xpm-devel
 BuildRequires:	libxext-devel
 BuildRequires:	x11-server-common
-BuildRequires: 	fontconfig-devel
+BuildRequires:	fontconfig-devel
 # fwang: the app needs /etc/X11/app-defaults
 BuildRequires:	xsysinfo
 # fbi uses convert to show indirectly supported image format
@@ -43,14 +42,14 @@ Requires:	ghostscript
 The fbida project contains a few applications for viewing and editing
 images, with the main focus being photos. The applications are:
 
-fbi      - Image viewer for Linux framebuffer console
-fbgs     - Wrapper script using fbi, for viewing ps/pdf files on framebuffer
-ida      - X11 application (Motif based) for viewing images with
-           basic editing functions
-exiftran - command line tool to do lossless transformations of JPEG
-           images, similar to jpegtran but includes EXIF data
+fbi	- Image viewer for Linux framebuffer console
+fbgs	- Wrapper script using fbi, for viewing ps/pdf files on framebuffer
+ida	- X11 application (Motif based) for viewing images with
+	basic editing functions
+exiftran- command line tool to do lossless transformations of JPEG
+	images, similar to jpegtran but includes EXIF data
 thumbnail.cgi - CGI script to extract EXIF thumbnails from jpeg images
-                and send them to web browser
+	 and send them to web browser
 
 This project used to be 2 seperate projects (fbi and ida), but later
 merged by author.
