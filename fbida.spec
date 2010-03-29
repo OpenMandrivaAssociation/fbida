@@ -2,7 +2,7 @@
 
 %define name	fbida
 %define version 2.07
-%define release %mkrel 3
+%define release %mkrel 4
 
 Summary:	Collection of applications for viewing and editing images
 Name:		%{name}
@@ -15,6 +15,9 @@ Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Source:		http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.bz2
 Patch1:		fbida-2.03-fbgs-arbitrary-resolution.patch
 Patch2:		fbida-2.07-fix-linkage.patch
+# replace old copied jpeg headers from old libjpeg with new one from libjpeg8
+# (c.f. the similar fix in mdv bug#57950)
+Patch3:		fbida-2.07-replace-old-libjpeg-headers.patch
 Provides:	fbi
 BuildRequires:	curl-devel
 BuildRequires:	freetype2-devel
@@ -58,6 +61,7 @@ merged by author.
 %setup -q
 %patch1 -p1 -b .resolution
 %patch2 -p0 -b .linkage
+%patch3 -p0 -b .oldjpeg
 rm -f jpeg/jpeg*
 
 %build
