@@ -1,23 +1,16 @@
-%define Werror_cflags %nil
-
-%define name	fbida
-%define version 2.07
-%define release %mkrel 5
-
 Summary:	Collection of applications for viewing and editing images
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		fbida
+Version:	2.09
+Release:	1
 License:	GPLv2+
 Group:		Graphics
 URL:		http://linux.bytesex.org/fbida/
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Source:		http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.bz2
-Patch1:		fbida-2.03-fbgs-arbitrary-resolution.patch
-Patch2:		fbida-2.07-fix-linkage.patch
+Source0:	http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.gz
 # replace old copied jpeg headers from old libjpeg with new one from libjpeg8
 # (c.f. the similar fix in mdv bug#57950)
-Patch3:		fbida-2.07-replace-old-libjpeg-headers.patch
+Patch0:		fbida-2.07-replace-old-libjpeg-headers.patch
+Patch1:		fbida-2.09-fmtstr.diff
+Patch2:		fbida-2.09-no_strip.diff
 Provides:	fbi
 BuildRequires:	curl-devel
 BuildRequires:	freetype2-devel
@@ -40,6 +33,7 @@ BuildRequires:	xsysinfo
 Requires:	imagemagick
 # fbgs requires gs
 Requires:	ghostscript
+Requires:	exiftran = %{name}-%{version}
 
 %description
 The fbida project contains a few applications for viewing and editing
@@ -57,12 +51,26 @@ thumbnail.cgi - CGI script to extract EXIF thumbnails from jpeg images
 This project used to be 2 seperate projects (fbi and ida), but later
 merged by author.
 
+%package -n	exiftran
+Summary:	Transform Digital Camera JPEG Images
+Group:		Graphics
+Conflicts:	fbida < 2.09
+
+%description -n	exiftran
+exiftran is a command-line utility to transform digital image JPEG
+images. It can do lossless rotations like jpegtran, but unlike
+jpegtran, it cares about the EXIF data.  It can rotate images
+automatically by checking the EXIF orientation tag, updating the EXIF
+information if needed (image dimension, orientation), and also rotating
+the EXIF thumbnail. It can process multiple images at once.
+
 %prep
+
 %setup -q
-%patch1 -p1 -b .resolution
-%patch2 -p0 -b .linkage
-%patch3 -p0 -b .oldjpeg
-rm -f jpeg/jpeg*
+%patch0 -p1 -b .oldjpeg
+%patch1 -p0 -b .fmtstr
+%patch2 -p0 -b .no_strip
+rm -f jpeg/*/jpeg*
 
 %build
 # Must use CFLAGS as env variable, because makefile adds flags to it.
@@ -71,7 +79,7 @@ export CFLAGS="%optflags"
 %make verbose=yes
 
 %install
-rm -rf %{buildroot}
+
 %makeinstall_std prefix=%{_prefix}
 
 mkdir -p %{buildroot}%{_datadir}/applications
@@ -87,13 +95,17 @@ StartupNotify=true
 Categories=Motif;Graphics;2DGraphics;RasterGraphics;Viewer;
 EOF
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc Changes COPYING README
 %config(noreplace) %{_sysconfdir}/X11/app-defaults/*
-%{_bindir}/*
+%{_bindir}/fbi
+%{_bindir}/fbgs
+%{_bindir}/ida
 %{_datadir}/applications/mandriva-%{name}.desktop
-%{_mandir}/man1/*
+%{_mandir}/man1/fbi.1*
+%{_mandir}/man1/fbgs.1*
+%{_mandir}/man1/ida.1*
+
+%files -n exiftran
+%{_bindir}/exiftran
+%{_mandir}/man1/exiftran.1*
