@@ -1,7 +1,7 @@
 Summary:	Collection of applications for viewing and editing images
 Name:		fbida
 Version:	2.09
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphics
 URL:		http://linux.bytesex.org/fbida/
@@ -33,7 +33,7 @@ BuildRequires:	xsysinfo
 Requires:	imagemagick
 # fbgs requires gs
 Requires:	ghostscript
-Requires:	exiftran = %{name}-%{version}
+Requires:	exiftran = %{version}
 
 %description
 The fbida project contains a few applications for viewing and editing
