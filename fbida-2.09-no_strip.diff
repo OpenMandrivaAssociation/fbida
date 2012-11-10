@@ -1,0 +1,14 @@
+--- mk/Variables.mk	2012-02-22 12:13:36.000000000 -0500
++++ mk/Variables.mk.oden	2012-07-13 07:13:22.232263372 -0400
+@@ -28,9 +28,9 @@
+ CXX		?= g++
+ MOC             ?= $(if $(QTDIR),$(QTDIR)/bin/moc,moc)
+ 
+-STRIP		?= -s
++STRIP		?= 
+ INSTALL		?= install
+-INSTALL_BINARY  := $(INSTALL) $(STRIP)
++INSTALL_BINARY  := $(INSTALL) -m 755
+ INSTALL_SCRIPT  := $(INSTALL)
+ INSTALL_DATA	:= $(INSTALL) -m 644
+ INSTALL_DIR	:= $(INSTALL) -d
