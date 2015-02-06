@@ -1,7 +1,7 @@
 Summary:	Collection of applications for viewing and editing images
 Name:		fbida
 Version:	2.09
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphics
 URL:		http://linux.bytesex.org/fbida/
