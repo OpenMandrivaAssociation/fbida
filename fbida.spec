@@ -29,6 +29,8 @@ BuildRequires:	x11-server-common
 BuildRequires:	fontconfig-devel
 # fwang: the app needs /etc/X11/app-defaults
 BuildRequires:	xsysinfo
+BuildRequires:	gcc-c++, gcc, gcc-cpp
+
 # fbi uses convert to show indirectly supported image format
 Requires:	imagemagick
 # fbgs requires gs
@@ -73,6 +75,8 @@ the EXIF thumbnail. It can process multiple images at once.
 rm -f jpeg/*/jpeg*
 
 %build
+export CC=gcc
+export CXX=g++
 # Must use CFLAGS as env variable, because makefile adds flags to it.
 # Directly specifying CFLAGS as make variable would fail
 export CFLAGS="%optflags"
