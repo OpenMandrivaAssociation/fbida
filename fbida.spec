@@ -15,6 +15,12 @@ Provides:	fbi
 BuildRequires:	curl-devel
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(poppler-glib)
+BuildRequires:	pkgconfig(libdrm)
+BuildRequires:	pkgconfig(pixman-1)
+BuildRequires:	pkgconfig(gbm)
+BuildRequires:	pkgconfig(egl)
+BuildRequires:	pkgconfig(epoxy)
+BuildRequires:	pkgconfig(cairo-gl)
 BuildRequires:	jpeg-devel
 BuildRequires:	libexif-devel
 BuildRequires:	libpcd-devel
