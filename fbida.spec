@@ -1,7 +1,7 @@
 Summary:	Collection of applications for viewing and editing images
 Name:		fbida
-Version:	2.09
-Release:	3
+Version:	2.14
+Release:	1
 License:	GPLv2+
 Group:		Graphics
 URL:		http://linux.bytesex.org/fbida/
@@ -9,11 +9,12 @@ Source0:	http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.gz
 # replace old copied jpeg headers from old libjpeg with new one from libjpeg8
 # (c.f. the similar fix in mdv bug#57950)
 Patch0:		fbida-2.07-replace-old-libjpeg-headers.patch
-Patch1:		fbida-2.09-fmtstr.diff
+Patch1:		fbida-2.14-compile.patch
 Patch2:		fbida-2.09-no_strip.diff
 Provides:	fbi
 BuildRequires:	curl-devel
 BuildRequires:	pkgconfig(freetype2)
+BuildRequires:	pkgconfig(poppler-glib)
 BuildRequires:	jpeg-devel
 BuildRequires:	libexif-devel
 BuildRequires:	libpcd-devel
@@ -22,14 +23,13 @@ BuildRequires:	png-devel
 BuildRequires:	sane-devel
 BuildRequires:	tiff-devel
 BuildRequires:	ungif-devel
-BuildRequires:	lesstif-devel
+BuildRequires:	motif-devel
 BuildRequires:	xpm-devel
 BuildRequires:	libxext-devel
 BuildRequires:	x11-server-common
 BuildRequires:	fontconfig-devel
 # fwang: the app needs /etc/X11/app-defaults
 BuildRequires:	xsysinfo
-BuildRequires:	gcc-c++, gcc, gcc-cpp
 
 # fbi uses convert to show indirectly supported image format
 Requires:	imagemagick
@@ -68,15 +68,12 @@ the EXIF thumbnail. It can process multiple images at once.
 
 %prep
 
-%setup -q
-%patch0 -p1 -b .oldjpeg
-%patch1 -p0 -b .fmtstr
-%patch2 -p0 -b .no_strip
+%autosetup -p1
 rm -f jpeg/*/jpeg*
 
 %build
-export CC=gcc
-export CXX=g++
+export CC=%{__cc}
+export CXX=%{__cxx}
 # Must use CFLAGS as env variable, because makefile adds flags to it.
 # Directly specifying CFLAGS as make variable would fail
 export CFLAGS="%optflags"
@@ -104,6 +101,7 @@ EOF
 %config(noreplace) %{_sysconfdir}/X11/app-defaults/*
 %{_bindir}/fbi
 %{_bindir}/fbgs
+%{_bindir}/fbpdf
 %{_bindir}/ida
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_mandir}/man1/fbi.1*

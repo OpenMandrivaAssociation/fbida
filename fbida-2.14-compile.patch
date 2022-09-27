@@ -1,0 +1,60 @@
+diff -up fbida-2.14/fbi.c.omv~ fbida-2.14/fbi.c
+--- fbida-2.14/fbi.c.omv~	2022-09-27 15:46:51.547271778 +0200
++++ fbida-2.14/fbi.c	2022-09-27 15:48:03.216758298 +0200
+@@ -100,7 +100,7 @@ static int img_mem, max_mem_mb;
+ 
+ /* graphics interface */
+ gfxstate                   *gfx;
+-int                        debug;
++extern int                 debug;
+ 
+ /* framebuffer */
+ char                       *fbdev = NULL;
+diff -up fbida-2.14/filter.c.omv~ fbida-2.14/filter.c
+--- fbida-2.14/filter.c.omv~	2022-09-27 15:47:03.931356039 +0200
++++ fbida-2.14/filter.c	2022-09-27 15:47:38.311589531 +0200
+@@ -6,7 +6,7 @@
+ #include "readers.h"
+ #include "filter.h"
+ 
+-int debug = 0;
++extern int debug;
+ 
+ /* ----------------------------------------------------------------------- */
+ 
+diff -up fbida-2.14/idaconfig.h.omv~ fbida-2.14/idaconfig.h
+--- fbida-2.14/idaconfig.h.omv~	2022-09-27 15:46:18.070043570 +0200
++++ fbida-2.14/idaconfig.h	2022-09-27 15:46:22.125071247 +0200
+@@ -17,7 +17,7 @@
+ 
+ /* -------------------------------------------------------------------------- */
+ 
+-char *ida_lists;
++extern char *ida_lists;
+ 
+ void ida_init_config(void);
+ void ida_read_config(void);
+diff -up fbida-2.14/rd/read-jpeg.c.omv~ fbida-2.14/rd/read-jpeg.c
+--- fbida-2.14/rd/read-jpeg.c.omv~	2022-09-27 15:48:18.768863532 +0200
++++ fbida-2.14/rd/read-jpeg.c	2022-09-27 15:48:28.174927123 +0200
+@@ -11,6 +11,8 @@
+ #include "readers.h"
+ #include "misc.h"
+ 
++int debug = 0;
++
+ /* ---------------------------------------------------------------------- */
+ /* load                                                                   */
+ 
+diff -up fbida-2.14/viewer.c.omv~ fbida-2.14/viewer.c
+--- fbida-2.14/viewer.c.omv~	2022-09-27 15:47:25.676503792 +0200
++++ fbida-2.14/viewer.c	2022-09-27 15:47:28.445522589 +0200
+@@ -39,7 +39,7 @@
+ 
+ #define PROCESS_LINES    16
+ 
+-int debug;
++extern int debug;
+ Cursor ptrs[POINTER_COUNT];
+ 
+ /* ----------------------------------------------------------------------- */
