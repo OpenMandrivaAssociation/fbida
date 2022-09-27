@@ -31,7 +31,7 @@ BuildRequires:	tiff-devel
 BuildRequires:	ungif-devel
 BuildRequires:	motif-devel
 BuildRequires:	xpm-devel
-BuildRequires:	libxext-devel
+BuildRequires:	pkgconfig(xext)
 BuildRequires:	x11-server-common
 BuildRequires:	fontconfig-devel
 # fwang: the app needs /etc/X11/app-defaults
