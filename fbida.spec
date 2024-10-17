@@ -4,7 +4,7 @@ Version:	2.14
 Release:	1
 License:	GPLv2+
 Group:		Graphics
-URL:		http://linux.bytesex.org/fbida/
+URL:		https://linux.bytesex.org/fbida/
 Source0:	http://dl.bytesex.org/releases/fbida/%{name}-%{version}.tar.gz
 # replace old copied jpeg headers from old libjpeg with new one from libjpeg8
 # (c.f. the similar fix in mdv bug#57950)
