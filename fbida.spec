@@ -12,6 +12,7 @@ Patch0:		fbida-2.07-replace-old-libjpeg-headers.patch
 Patch1:		fbida-2.14-compile.patch
 Patch2:		fbida-2.09-no_strip.diff
 Provides:	fbi
+BuildRequires:	make
 BuildRequires:	curl-devel
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(poppler-glib)
